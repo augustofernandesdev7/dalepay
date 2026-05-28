@@ -43,12 +43,6 @@ export default function FinalCta() {
                       <ArrowRight size={13} weight="bold" />
                     </span>
                   </a>
-                  <a
-                    href="#devs"
-                    className="flex items-center gap-2 text-dale-hi font-display font-bold text-[16px] rounded-full px-8 py-4 border border-white/[0.12] hover:border-dale-400 hover:text-dale-400 hover:-translate-y-0.5 transition-all duration-500"
-                  >
-                    Ver documentação
-                  </a>
                 </div>
               </div>
             </div>
