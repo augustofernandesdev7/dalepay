@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dale. — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Sora:wght@400;500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/dale.css">
+<style>
+  body { display: grid; grid-template-columns: 248px 1fr; min-height: 100vh; }
+  @media(max-width: 880px){ body{ grid-template-columns: 1fr; } .side{ display:none; } }
+
+  /* sidebar */
+  .side {
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    border-right: 1px solid var(--line);
+    background: var(--bg-soft); padding: 26px 18px;
+  }
+  .side .brand { display:flex; align-items:center; gap:10px; margin-bottom: 28px; padding-left: 8px; }
+  .side .brand .ic { width: 34px; }
+  .side .brand .dale-word { font-size: 26px; }
+  .side .navh { font-family: var(--font-display); font-size: var(--t-xs); letter-spacing:.12em; text-transform:uppercase; color: var(--text-faint); margin: 18px 8px 8px; }
+  .side a { display:block; padding: 8px 12px; border-radius: var(--r-sm); color: var(--text-dim); font-size: var(--t-sm); }
+  .side a:hover { background: var(--surface-2); color: var(--text-hi); }
+
+  main { padding: 0; }
+  .ds-head {
+    padding: 70px 48px 50px; border-bottom: 1px solid var(--line);
+    background: radial-gradient(800px 360px at 90% -20%, rgba(0,210,108,.14), transparent 60%);
+  }
+  .ds-head h1 { font-size: var(--t-3xl); font-weight: 800; }
+  .ds-head p { margin-top: 16px; max-width: 560px; color: var(--text-dim); font-size: var(--t-lg); }
+  .ds-head .pill { display:inline-flex; gap:8px; margin-bottom:20px; }
+  .tagpill { font-family:var(--font-mono); font-size: var(--t-xs); border:1px solid var(--line-green); color: var(--green-400); border-radius: var(--r-pill); padding: 5px 12px; }
+
+  .block { padding: 56px 48px; border-bottom: 1px solid var(--line); }
+  @media(max-width:560px){ .block, .ds-head{ padding-left:22px; padding-right:22px; } }
+  .block > h2 { font-size: var(--t-2xl); margin-bottom: 6px; display:flex; align-items:center; gap:12px; }
+  .block > h2 .ix { font-family:var(--font-mono); font-size: 13px; color: var(--green-500); border:1px solid var(--line-green); border-radius:var(--r-pill); padding:3px 9px; }
+  .block > .sub { color: var(--text-dim); font-size: var(--t-sm); margin-bottom: 32px; }
+
+  .row { display:flex; flex-wrap: wrap; gap: 16px; align-items:center; }
+  .stack { display:flex; flex-direction: column; gap: 14px; }
+  .demo { background: var(--surface-1); border:1px solid var(--line); border-radius: var(--r-lg); padding: 28px; }
+  .demo + .demo { margin-top: 16px; }
+  .demo-label { font-family: var(--font-mono); font-size: var(--t-xs); color: var(--text-faint); margin-bottom: 18px; letter-spacing:.06em; }
+
+  /* color tokens */
+  .tok-grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(170px,1fr)); gap: 14px; }
+  .tok { border:1px solid var(--line); border-radius: var(--r-md); overflow:hidden; }
+  .tok .c { height: 70px; }
+  .tok .i { padding: 10px 12px; background: var(--surface-1); }
+  .tok .i b { display:block; font-family:var(--font-display); font-weight:600; color:var(--text-hi); font-size: 13px; }
+  .tok .i code { font-family:var(--font-mono); font-size: 11px; color: var(--text-dim); }
+
+  /* type scale */
+  .ts { display:flex; align-items:baseline; gap: 20px; padding: 14px 0; border-bottom:1px dashed var(--line); }
+  .ts code { font-family:var(--font-mono); font-size: 12px; color: var(--text-faint); width: 130px; flex:0 0 auto; }
+
+  /* sizing tokens */
+  .sp-demo { display:flex; align-items:flex-end; gap: 14px; }
+  .sp-demo .s { background: var(--green-700); border-radius: 4px; }
+  .sp-demo .s span { display:block; text-align:center; font-family:var(--font-mono); font-size: 11px; color: var(--text-dim); margin-top:6px; }
+  .rad-demo { display:flex; gap:16px; flex-wrap:wrap; }
+  .rad-demo .r { width: 76px; height:76px; background: var(--surface-3); border:1px solid var(--line-green); display:grid;place-items:end center; padding-bottom:6px; font-family:var(--font-mono); font-size:11px; color:var(--text-dim); }
+
+  /* form */
+  .field { display:flex; flex-direction:column; gap:7px; max-width: 340px; }
+  .field label { font-family:var(--font-display); font-weight:600; font-size: var(--t-xs); letter-spacing:.04em; color: var(--text); }
+  .input, .select, textarea.input {
+    background: var(--surface-2); border:1px solid var(--line-2); border-radius: var(--r-md);
+    padding: 12px 14px; color: var(--text-hi); font-family: var(--font-body); font-size: var(--t-sm);
+    width: 100%; transition: border-color .15s, box-shadow .15s; outline: none;
+  }
+  .input::placeholder { color: var(--text-faint); }
+  .input:focus, .select:focus, textarea.input:focus { border-color: var(--green-500); box-shadow: 0 0 0 3px rgba(0,210,108,.15); }
+  .field.err .input { border-color: var(--rose); }
+  .field.err .hint { color: var(--rose); }
+  .hint { font-size: var(--t-xs); color: var(--text-faint); }
+  .input-amount { display:flex; align-items:center; background: var(--surface-2); border:1px solid var(--line-2); border-radius: var(--r-md); padding: 0 14px; max-width:340px; }
+  .input-amount span { color: var(--text-dim); font-family: var(--font-mono); }
+  .input-amount input { background:transparent;border:0;outline:0;color:var(--text-hi); font-family:var(--font-mono); font-size: var(--t-lg); padding: 13px 8px; width:100%; }
+  .input-icon { position: relative; max-width: 340px; }
+  .input-icon .input { padding-left: 40px; }
+  .input-icon svg { position:absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--text-faint); }
+
+  /* switch */
+  .switch { position: relative; width: 46px; height: 26px; flex:0 0 auto; }
+  .switch input { display:none; }
+  .switch .tr { position:absolute; inset:0; background: var(--surface-3); border:1px solid var(--line-2); border-radius: var(--r-pill); transition: .2s; }
+  .switch .tr::after { content:""; position:absolute; top:3px; left:3px; width:18px;height:18px;border-radius:50%; background: var(--text-dim); transition:.2s; }
+  .switch input:checked + .tr { background: var(--brand-gradient); border-color: transparent; }
+  .switch input:checked + .tr::after { left: 23px; background: #042012; }
+  .check { display:inline-flex; align-items:center; gap:10px; cursor:pointer; font-size: var(--t-sm); }
+  .check .bx { width:20px;height:20px;border-radius:6px;border:1px solid var(--line-2); background:var(--surface-2); display:grid;place-items:center; color:transparent; }
+  .check.on .bx { background: var(--brand-gradient); border-color:transparent; color:#042012; }
+
+  /* segmented */
+  .seg { display:inline-flex; background: var(--surface-2); border:1px solid var(--line); border-radius: var(--r-pill); padding: 4px; gap:4px; }
+  .seg button { border:0; background:transparent; color: var(--text-dim); font-family:var(--font-display); font-weight:600; font-size: var(--t-sm); padding: 8px 18px; border-radius: var(--r-pill); cursor:pointer; }
+  .seg button.on { background: var(--brand-gradient); color: #042012; }
+
+  /* badges / status */
+  .badge { display:inline-flex; align-items:center; gap:7px; font-family:var(--font-display); font-weight:600; font-size: var(--t-xs); padding: 5px 12px; border-radius: var(--r-pill); }
+  .dot { width:7px;height:7px;border-radius:50%; }
+  .b-paid { background: rgba(0,210,108,.14); color: var(--green-400); }
+  .b-paid .dot{ background: var(--green-400); }
+  .b-pend { background: rgba(245,181,68,.14); color: var(--amber); }
+  .b-pend .dot{ background: var(--amber); }
+  .b-fail { background: rgba(255,107,107,.14); color: var(--rose); }
+  .b-fail .dot{ background: var(--rose); }
+  .b-ref  { background: var(--surface-3); color: var(--text-dim); }
+  .b-ref .dot{ background: var(--text-dim); }
+
+  /* payment chips */
+  .pm { display:inline-flex; align-items:center; gap:9px; background: var(--surface-2); border:1px solid var(--line); border-radius: var(--r-md); padding: 10px 16px; font-family:var(--font-display); font-weight:700; font-size: var(--t-sm); color: var(--text-hi); }
+  .pm .mk { width: 30px;height:20px;border-radius:4px; display:grid;place-items:center; font-size:10px;font-weight:800; }
+
+  /* cards */
+  .card-grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr)); gap: 16px; }
+  .stat { background: var(--surface-1); border:1px solid var(--line); border-radius: var(--r-lg); padding: 22px; }
+  .stat .k { font-size: var(--t-xs); color: var(--text-dim); font-family:var(--font-display); font-weight:600; letter-spacing:.04em; }
+  .stat .v { font-family: var(--font-display); font-weight:800; font-size: var(--t-2xl); color: var(--text-hi); margin: 8px 0 4px; letter-spacing:-.02em; }
+  .stat .d { font-size: var(--t-xs); color: var(--green-400); }
+  .balance { background: linear-gradient(150deg, #0a1812, #06100b); border:1px solid var(--line-green); border-radius: var(--r-lg); padding: 24px; position:relative; overflow:hidden; }
+  .balance::after{ content:""; position:absolute; right:-40px; top:-40px; width:160px;height:160px;border-radius:50%; background: radial-gradient(circle, var(--green-glow), transparent 70%);}
+  .balance .k { color: var(--text-dim); font-size: var(--t-sm); }
+  .balance .v { font-family:var(--font-display); font-weight:800; font-size: var(--t-3xl); color: var(--text-hi); margin-top:6px; }
+
+  /* table */
+  .tbl { width:100%; border-collapse: collapse; font-size: var(--t-sm); }
+  .tbl th { text-align:left; font-family:var(--font-display); font-weight:600; font-size:var(--t-xs); letter-spacing:.06em; text-transform:uppercase; color: var(--text-faint); padding: 12px 14px; border-bottom:1px solid var(--line); }
+  .tbl td { padding: 14px; border-bottom:1px solid var(--line); color: var(--text); }
+  .tbl tr:hover td { background: var(--surface-1); }
+  .tbl .mono { font-family:var(--font-mono); color: var(--text-dim); font-size: var(--t-xs); }
+  .tbl .amt { font-family:var(--font-mono); color: var(--text-hi); font-weight:500; }
+
+  /* alert */
+  .alert { display:flex; gap:14px; padding: 16px 18px; border-radius: var(--r-md); border:1px solid var(--line); background: var(--surface-1); align-items:flex-start; max-width: 560px; }
+  .alert .ic2 { width:22px;height:22px;border-radius:50%; display:grid;place-items:center; flex:0 0 auto; font-size: 13px; font-weight:800; margin-top:2px;}
+  .alert.success { border-color: var(--line-green); } .alert.success .ic2{ background: var(--green-500); color:#042012; }
+  .alert.warn .ic2{ background: var(--amber); color:#2a1c00; }
+  .alert h4 { font-size: var(--t-sm); margin-bottom:3px; }
+  .alert p { font-size: var(--t-xs); color: var(--text-dim); }
+
+  /* code */
+  .code { background: #060d09; border:1px solid var(--line); border-radius: var(--r-lg); overflow:hidden; max-width: 640px; }
+  .code .bar { display:flex; align-items:center; gap:8px; padding: 12px 16px; border-bottom:1px solid var(--line); }
+  .code .bar .ds { display:flex; gap:6px; } .code .bar .ds i{ width:11px;height:11px;border-radius:50%; display:block;} 
+  .code .bar .fn { margin-left:auto; font-family:var(--font-mono); font-size:12px; color:var(--text-faint); }
+  .code pre { margin:0; padding: 18px 20px; font-family: var(--font-mono); font-size: 13px; line-height:1.7; overflow-x:auto; color: var(--text); }
+  .code .kw{color:#ff7ba8} .code .st{color:var(--green-400)} .code .nm{color:var(--amber)} .code .cm{color:var(--text-faint)} .code .fnn{color:#7fd7ff}
+
+  .avatars { display:flex; }
+  .avatars .av { width:40px;height:40px;border-radius:50%; border:2px solid var(--bg); margin-left:-10px; display:grid;place-items:center; font-family:var(--font-display); font-weight:700; color:#042012; font-size:14px; }
+
+  .progress { max-width: 360px; }
+  .progress .bar { height: 8px; background: var(--surface-3); border-radius: var(--r-pill); overflow:hidden; }
+  .progress .bar i { display:block; height:100%; background: var(--brand-gradient); border-radius: var(--r-pill); }
+
+  .tip { display:inline-block; position: relative; }
+  .tip .bub { background: var(--surface-3); border:1px solid var(--line-2); color: var(--text-hi); font-size: var(--t-xs); padding: 8px 12px; border-radius: var(--r-sm); position: relative; }
+  .tip .bub::after{ content:""; position:absolute; bottom:-6px; left: 22px; width:10px;height:10px; background: var(--surface-3); border-right:1px solid var(--line-2); border-bottom:1px solid var(--line-2); transform: rotate(45deg); }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="daleGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00D26C"/><stop offset="1" stop-color="#009C48"/></linearGradient>
+  <symbol id="mark-grad" viewBox="0 0 120 96">
+    <path fill="url(#daleGrad)" fill-rule="evenodd" d="M 10 3 L 73 2 C 98 2 120 22 120 48 C 120 74 98 94 73 94 L 10 93 C 3 90 0 70 0 48 C 0 26 3 6 10 3 Z M 30 22 L 72 20 C 92 20 98 33 98 48 C 98 63 92 76 72 76 L 30 74 L 30 22 Z"/>
+    <path fill="url(#daleGrad)" d="M 14 28 L 74 48 L 20 64 L 20 54 L 49 48 L 14 38 Z"/>
+  </symbol>
+</defs></svg>
+
+<!-- SIDEBAR -->
+<aside class="side">
+  <div class="brand"><img class="ic" src="assets/dale-mark.png" alt="dale."><span class="dale-word">dale<span class="dot">.</span></span></div>
+  <div class="navh">Fundamentos</div>
+  <a href="#cores">Cores</a>
+  <a href="#tipografia">Tipografia</a>
+  <a href="#espaco">Espaço & raio</a>
+  <div class="navh">Componentes</div>
+  <a href="#botoes">Botões</a>
+  <a href="#forms">Formulários</a>
+  <a href="#controles">Controles</a>
+  <a href="#status">Status & badges</a>
+  <a href="#metodos">Métodos de pagamento</a>
+  <a href="#cards">Cards & métricas</a>
+  <a href="#tabela">Tabela de transações</a>
+  <a href="#feedback">Alertas & feedback</a>
+  <a href="#api">API & código</a>
+</aside>
+
+<main>
+  <div class="ds-head">
+    <div class="pill"><span class="tagpill">v1.0</span><span class="tagpill">dark · neon</span></div>
+    <h1>Design System</h1>
+    <p>Os blocos de construção do produto dale. — tokens, componentes e padrões prontos para checkout, dashboard e API.</p>
+  </div>
+
+  <!-- CORES -->
+  <section class="block" id="cores">
+    <h2><span class="ix">A1</span>Cores</h2>
+    <p class="sub">Verde de marca + escala de superfícies escuras + cores semânticas.</p>
+    <div class="demo">
+      <div class="demo-label">// brand</div>
+      <div class="tok-grid">
+        <div class="tok"><div class="c" style="background:var(--brand-gradient)"></div><div class="i"><b>Gradient</b><code>--brand-gradient</code></div></div>
+        <div class="tok"><div class="c" style="background:var(--green-500)"></div><div class="i"><b>Green 500</b><code>#00C25A</code></div></div>
+        <div class="tok"><div class="c" style="background:var(--green-400)"></div><div class="i"><b>Green 400</b><code>#00E676</code></div></div>
+        <div class="tok"><div class="c" style="background:var(--green-700)"></div><div class="i"><b>Green 700</b><code>#009C48</code></div></div>
+      </div>
+      <div class="demo-label" style="margin-top:24px">// surfaces & semantic</div>
+      <div class="tok-grid">
+        <div class="tok"><div class="c" style="background:var(--ink)"></div><div class="i"><b>Ink</b><code>#000000</code></div></div>
+        <div class="tok"><div class="c" style="background:var(--bg)"></div><div class="i"><b>Background</b><code>#040907</code></div></div>
+        <div class="tok"><div class="c" style="background:var(--surface-1)"></div><div class="i"><b>Surface 1</b><code>#0B1310</code></div></div>
+        <div class="tok"><div class="c" style="background:var(--surface-2)"></div><div class="i"><b>Surface 2</b><code>#101A15</code></div></div>
+        <div class="tok"><div class="c" style="background:var(--amber)"></div><div class="i"><b>Amber</b><code>#F5B544</code></div></div>
+        <div class="tok"><div class="c" style="background:var(--rose)"></div><div class="i"><b>Rose</b><code>#FF6B6B</code></div></div>
+        <div class="tok"><div class="c" style="background:var(--teal)"></div><div class="i"><b>Teal</b><code>#19D3C5</code></div></div>
+        <div class="tok"><div class="c" style="background:var(--text-hi)"></div><div class="i"><b>Text Hi</b><code>#F2F7F4</code></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPOGRAFIA -->
+  <section class="block" id="tipografia">
+    <h2><span class="ix">A2</span>Tipografia</h2>
+    <p class="sub">Sora (display) · Hanken Grotesk (texto) · JetBrains Mono (dados). Escala fluida.</p>
+    <div class="demo">
+      <div class="ts"><code>--t-4xl / 800</code><span style="font-family:var(--font-display);font-weight:800;font-size:var(--t-4xl);color:var(--text-hi);letter-spacing:-.03em">Receba na hora</span></div>
+      <div class="ts"><code>--t-3xl / 800</code><span style="font-family:var(--font-display);font-weight:800;font-size:var(--t-3xl);color:var(--text-hi)">Pagamentos sem fricção</span></div>
+      <div class="ts"><code>--t-2xl / 700</code><span style="font-family:var(--font-display);font-weight:700;font-size:var(--t-2xl);color:var(--text-hi)">Título de seção</span></div>
+      <div class="ts"><code>--t-xl / 600</code><span style="font-family:var(--font-display);font-weight:600;font-size:var(--t-xl);color:var(--text-hi)">Subtítulo de card</span></div>
+      <div class="ts"><code>--t-base / 400</code><span style="font-size:var(--t-base);color:var(--text)">Texto de corpo padrão — taxas transparentes e liquidação rápida.</span></div>
+      <div class="ts"><code>--t-sm / 400</code><span style="font-size:var(--t-sm);color:var(--text-dim)">Texto secundário e legendas de interface.</span></div>
+      <div class="ts" style="border:0"><code>mono / 500</code><span style="font-family:var(--font-mono);font-size:var(--t-sm);color:var(--text-dim)">txn_8f2a91 · R$ 1.250,00</span></div>
+    </div>
+  </section>
+
+  <!-- ESPACO -->
+  <section class="block" id="espaco">
+    <h2><span class="ix">A3</span>Espaço & raio</h2>
+    <p class="sub">Grade base 8&nbsp;pt e raios consistentes.</p>
+    <div class="demo">
+      <div class="demo-label">// spacing (px)</div>
+      <div class="sp-demo">
+        <div class="s" style="width:4px;height:4px"><span>4</span></div>
+        <div class="s" style="width:8px;height:8px"><span>8</span></div>
+        <div class="s" style="width:12px;height:12px"><span>12</span></div>
+        <div class="s" style="width:16px;height:16px"><span>16</span></div>
+        <div class="s" style="width:24px;height:24px"><span>24</span></div>
+        <div class="s" style="width:32px;height:32px"><span>32</span></div>
+        <div class="s" style="width:48px;height:48px"><span>48</span></div>
+        <div class="s" style="width:64px;height:64px"><span>64</span></div>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="demo-label">// radius</div>
+      <div class="rad-demo">
+        <div class="r" style="border-radius:8px">8</div>
+        <div class="r" style="border-radius:12px">12</div>
+        <div class="r" style="border-radius:18px">18</div>
+        <div class="r" style="border-radius:26px">26</div>
+        <div class="r" style="border-radius:999px">pill</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTOES -->
+  <section class="block" id="botoes">
+    <h2><span class="ix">B1</span>Botões</h2>
+    <p class="sub">Primário em gradiente verde com glow; secundários discretos.</p>
+    <div class="demo">
+      <div class="demo-label">// variants</div>
+      <div class="row">
+        <button class="btn btn-primary">Criar conta →</button>
+        <button class="btn btn-ghost">Ver documentação</button>
+        <button class="btn btn-soft">Falar com vendas</button>
+        <button class="btn btn-primary" style="opacity:.45;cursor:not-allowed">Desabilitado</button>
+      </div>
+      <div class="demo-label" style="margin-top:24px">// sizes</div>
+      <div class="row">
+        <button class="btn btn-primary" style="padding:9px 16px;font-size:13px">Pequeno</button>
+        <button class="btn btn-primary">Médio</button>
+        <button class="btn btn-primary" style="padding:16px 30px;font-size:16px">Grande</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMS -->
+  <section class="block" id="forms">
+    <h2><span class="ix">B2</span>Formulários</h2>
+    <p class="sub">Campos de entrada, valores monetários e estados de validação.</p>
+    <div class="demo">
+      <div class="row" style="align-items:flex-start;gap:32px">
+        <div class="stack">
+          <div class="field"><label>E-mail</label><input class="input" placeholder="voce@empresa.com.br"></div>
+          <div class="field err"><label>CNPJ</label><input class="input" value="00.000.000/0001-00"><span class="hint">CNPJ inválido — verifique os dígitos.</span></div>
+        </div>
+        <div class="stack">
+          <div class="field"><label>Valor da cobrança</label>
+            <div class="input-amount"><span>R$</span><input value="1.250,00"></div>
+          </div>
+          <div class="field"><label>Buscar transação</label>
+            <div class="input-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input class="input" placeholder="ID, e-mail ou valor">
+            </div>
+          </div>
+        </div>
+        <div class="stack">
+          <div class="field"><label>Método</label>
+            <select class="select"><option>Pix</option><option>Cartão de crédito</option><option>Boleto</option></select>
+          </div>
+          <div class="field"><label>Descrição</label><textarea class="input" rows="2" placeholder="Ex.: Mensalidade do curso"></textarea></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTROLES -->
+  <section class="block" id="controles">
+    <h2><span class="ix">B3</span>Controles</h2>
+    <p class="sub">Switch, checkbox e controle segmentado.</p>
+    <div class="demo">
+      <div class="row" style="gap:40px">
+        <label class="row" style="gap:12px;cursor:pointer"><span class="switch"><input type="checkbox" checked><span class="tr"></span></span> <span style="font-size:var(--t-sm)">Antifraude ativo</span></label>
+        <label class="row" style="gap:12px;cursor:pointer"><span class="switch"><input type="checkbox"><span class="tr"></span></span> <span style="font-size:var(--t-sm)">Modo sandbox</span></label>
+        <span class="check on"><span class="bx">✓</span> Split automático</span>
+        <span class="check"><span class="bx">✓</span> Recorrência</span>
+      </div>
+      <div class="row" style="margin-top:26px">
+        <div class="seg"><button class="on">Pix</button><button>Cartão</button><button>Boleto</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATUS -->
+  <section class="block" id="status">
+    <h2><span class="ix">C1</span>Status & badges</h2>
+    <p class="sub">Estados de uma transação no ciclo de vida do pagamento.</p>
+    <div class="demo">
+      <div class="row">
+        <span class="badge b-paid"><span class="dot"></span>Pago</span>
+        <span class="badge b-pend"><span class="dot"></span>Pendente</span>
+        <span class="badge b-fail"><span class="dot"></span>Recusado</span>
+        <span class="badge b-ref"><span class="dot"></span>Estornado</span>
+        <span class="badge b-paid"><span class="dot"></span>Liquidado</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- METODOS -->
+  <section class="block" id="metodos">
+    <h2><span class="ix">C2</span>Métodos de pagamento</h2>
+    <p class="sub">Chips de bandeiras e meios aceitos no checkout.</p>
+    <div class="demo">
+      <div class="row">
+        <span class="pm"><span class="mk" style="background:#32BCAD;color:#fff">P</span>Pix</span>
+        <span class="pm"><span class="mk" style="background:#1434CB;color:#fff">V</span>Visa</span>
+        <span class="pm"><span class="mk" style="background:linear-gradient(90deg,#EB001B,#F79E1B);color:#fff">M</span>Mastercard</span>
+        <span class="pm"><span class="mk" style="background:#016FD0;color:#fff">A</span>Amex</span>
+        <span class="pm"><span class="mk" style="background:#211915;color:#FFCB05">E</span>Elo</span>
+        <span class="pm"><span class="mk" style="background:var(--surface-3);color:var(--text)">␦</span>Boleto</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDS -->
+  <section class="block" id="cards">
+    <h2><span class="ix">C3</span>Cards & métricas</h2>
+    <p class="sub">Blocos de dashboard — saldo, volume e indicadores.</p>
+    <div class="demo">
+      <div class="card-grid">
+        <div class="balance"><div class="k">Saldo disponível</div><div class="v">R$ 84.920<span style="font-size:.5em;color:var(--text-dim)">,30</span></div><div style="margin-top:14px"><button class="btn btn-primary" style="padding:9px 18px;font-size:13px">Sacar</button></div></div>
+        <div class="stat"><div class="k">Volume transacionado</div><div class="v">R$ 1,2M</div><div class="d">↑ 18,4% no mês</div></div>
+        <div class="stat"><div class="k">Taxa de aprovação</div><div class="v">98,7%</div><div class="d">↑ 2,1 p.p.</div></div>
+        <div class="stat"><div class="k">Transações hoje</div><div class="v">3.481</div><div class="d">↑ 312 vs ontem</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABELA -->
+  <section class="block" id="tabela">
+    <h2><span class="ix">C4</span>Tabela de transações</h2>
+    <p class="sub">Listagem densa com status, método e valor.</p>
+    <div class="demo" style="padding:0;overflow:hidden">
+      <table class="tbl">
+        <thead><tr><th>ID</th><th>Cliente</th><th>Método</th><th>Status</th><th style="text-align:right">Valor</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">txn_8f2a91</td><td>Marina Alves</td><td>Pix</td><td><span class="badge b-paid"><span class="dot"></span>Pago</span></td><td class="amt" style="text-align:right">R$ 1.250,00</td></tr>
+          <tr><td class="mono">txn_7b1c04</td><td>Curso Dev Pro</td><td>Visa ••42</td><td><span class="badge b-pend"><span class="dot"></span>Pendente</span></td><td class="amt" style="text-align:right">R$ 497,00</td></tr>
+          <tr><td class="mono">txn_5e9d77</td><td>Loja Norte</td><td>Boleto</td><td><span class="badge b-fail"><span class="dot"></span>Recusado</span></td><td class="amt" style="text-align:right">R$ 89,90</td></tr>
+          <tr><td class="mono">txn_2a4f10</td><td>João P. Souza</td><td>Master ••08</td><td><span class="badge b-paid"><span class="dot"></span>Pago</span></td><td class="amt" style="text-align:right">R$ 3.400,00</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section class="block" id="feedback">
+    <h2><span class="ix">D1</span>Alertas & feedback</h2>
+    <p class="sub">Avatares, progresso, tooltip e banners.</p>
+    <div class="demo">
+      <div class="stack" style="gap:18px">
+        <div class="alert success"><div class="ic2">✓</div><div><h4>Pagamento confirmado</h4><p>R$ 1.250,00 via Pix · liquidação em D+0.</p></div></div>
+        <div class="alert warn"><div class="ic2">!</div><div><h4>Verificação pendente</h4><p>Envie os documentos para liberar saques acima de R$ 50 mil.</p></div></div>
+      </div>
+      <div class="row" style="margin-top:26px;gap:40px;align-items:center">
+        <div><div class="demo-label">// avatares</div><div class="avatars">
+          <div class="av" style="background:var(--green-400)">MA</div>
+          <div class="av" style="background:var(--teal)">JS</div>
+          <div class="av" style="background:var(--amber)">LN</div>
+          <div class="av" style="background:var(--surface-3);color:var(--text)">+9</div>
+        </div></div>
+        <div class="progress"><div class="demo-label">// progresso · 72%</div><div class="bar"><i style="width:72%"></i></div></div>
+        <div><div class="demo-label">// tooltip</div><div class="tip"><div class="bub">Taxa Pix: 0,99%</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- API -->
+  <section class="block" id="api" style="border-bottom:0">
+    <h2><span class="ix">D2</span>API & código</h2>
+    <p class="sub">Bloco de código para documentação do desenvolvedor.</p>
+    <div class="demo">
+      <div class="code">
+        <div class="bar"><span class="ds"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></span><span class="fn">criar-cobranca.js</span></div>
+<pre><span class="cm">// Cria uma cobrança Pix com a API dale.</span>
+<span class="kw">const</span> charge = <span class="kw">await</span> dale.<span class="fnn">charges</span>.<span class="fnn">create</span>({
+  amount: <span class="nm">125000</span>,        <span class="cm">// R$ 1.250,00 em centavos</span>
+  method: <span class="st">"pix"</span>,
+  customer: <span class="st">"cus_8f2a91"</span>,
+  split: [{ recipient: <span class="st">"rec_loja"</span>, amount: <span class="nm">118750</span> }]
+});
+
+console.<span class="fnn">log</span>(charge.status); <span class="cm">// "pending" → webhook em ~2s</span></pre>
+      </div>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>

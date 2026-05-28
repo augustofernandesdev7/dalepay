@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dale. — Receba por Pix, cartão e boleto. Na hora.</title>
+<link rel="icon" href="assets/dale-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Sora:wght@400;500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:wght@500;600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/dale.css">
+<link rel="stylesheet" href="assets/landing.css">
+</head>
+<body>
+
+<!-- shared svg symbols -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="daleGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00D26C"/><stop offset="1" stop-color="#009C48"/></linearGradient>
+  <symbol id="mark-grad" viewBox="0 0 120 96">
+    <path fill="url(#daleGrad)" fill-rule="evenodd" d="M 10 3 L 73 2 C 98 2 120 22 120 48 C 120 74 98 94 73 94 L 10 93 C 3 90 0 70 0 48 C 0 26 3 6 10 3 Z M 30 22 L 72 20 C 92 20 98 33 98 48 C 98 63 92 76 72 76 L 30 74 L 30 22 Z"/>
+    <path fill="url(#daleGrad)" d="M 14 28 L 74 48 L 20 64 L 20 54 L 49 48 L 14 38 Z"/>
+  </symbol>
+</defs></svg>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav"><div class="wrap inner">
+  <a href="#top" class="logo"><img class="ic" src="assets/dale-mark.png" alt="dale."><span class="dale-word">dale<span class="dot">.</span></span></a>
+  <div class="links">
+    <a href="#recursos">Recursos</a>
+    <a href="#como">Como funciona</a>
+    <a href="#taxas">Taxas</a>
+    <a href="#devs">Desenvolvedores</a>
+  </div>
+  <div class="actions">
+    <a href="#" class="login">Entrar</a>
+    <a href="#cta" class="btn btn-primary">Criar conta grátis</a>
+    <button class="menu-btn" aria-label="Menu"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</div></nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-bg"><div class="glow"></div><div class="grid"></div></div>
+  <div class="wrap inner">
+    <div>
+      <span class="chip-eyebrow"><span class="tagn">Novo</span> Pix com liquidação <b>D+0</b></span>
+      <h1>Receba por Pix, cartão e boleto. <span class="g">Na hora.</span></h1>
+      <p class="lead">O gateway de pagamento brasileiro feito para infoprodutores e e-commerce que querem vender mais e pagar menos. Uma integração, todos os meios.</p>
+      <div class="cta">
+        <a href="#cta" class="btn btn-primary">Criar conta grátis →</a>
+        <a href="#devs" class="btn btn-ghost">Ver documentação</a>
+      </div>
+      <div class="trust">
+        <span><span class="ck">✓</span> Sem mensalidade</span>
+        <span><span class="ck">✓</span> Antifraude incluso</span>
+        <span><span class="ck">✓</span> Aprovação em minutos</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="checkout">
+        <div class="ch-head">
+          <img class="ic" src="assets/dale-mark.png" alt="dale.">
+          <span class="t">Checkout dale.</span>
+          <span class="lock"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> seguro</span>
+        </div>
+        <div class="ch-body">
+          <div class="amt-row"><span class="lbl">Total a pagar</span><span class="val">R$ 1.250,00</span></div>
+          <div class="methods"><div class="m on">Pix</div><div class="m">Cartão</div><div class="m">Boleto</div></div>
+          <div class="qr">
+            <svg viewBox="0 0 100 100" id="qr"></svg>
+          </div>
+          <a href="#cta" class="btn btn-primary paybtn">Pagar com Pix</a>
+          <div class="ch-foot">Aprovação instantânea · cai na conta na hora</div>
+        </div>
+      </div>
+      <div class="toast">
+        <div class="tk">✓</div>
+        <div><div class="tt">Pagamento aprovado</div><div class="ts">R$ 1.250,00 · agora</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- audience strip -->
+<div class="wrap"><div class="aud">
+  <span class="l">Feito para</span>
+  <span class="tag">Infoprodutos</span>
+  <span class="tag">E-commerce</span>
+  <span class="tag">Marketplaces</span>
+  <span class="tag">SaaS</span>
+  <span class="tag">Assinaturas</span>
+</div></div>
+
+<!-- ============ FEATURES ============ -->
+<section class="section" id="recursos"><div class="wrap">
+  <div class="section-head reveal">
+    <span class="eyebrow">Recursos</span>
+    <h2 style="margin-top:14px">Tudo que seu negócio precisa pra receber</h2>
+    <p>Uma stack de pagamentos completa, do checkout ao saque — sem complicação e sem letras miúdas.</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat reveal">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+      <h3>Pix instantâneo</h3>
+      <p>Cobranças Pix com QR Code dinâmico e confirmação em segundos. Liquidação D+0 direto na sua conta.</p>
+    </div>
+    <div class="feat reveal">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+      <h3>Checkout transparente</h3>
+      <p>O cliente paga sem sair do seu site. Personalize cores, logo e domínio — a marca é sua, a tecnologia é nossa.</p>
+    </div>
+    <div class="feat reveal">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h6"/></svg></div>
+      <h3>Split de pagamento</h3>
+      <p>Divida o valor de cada venda automaticamente entre sócios, afiliados e coprodutores. Sem planilha, sem dor de cabeça.</p>
+    </div>
+    <div class="feat reveal">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></div>
+      <h3>Antifraude nativo</h3>
+      <p>Motor de risco com machine learning que bloqueia chargebacks antes que eles aconteçam. Incluso, sem custo extra.</p>
+    </div>
+    <div class="feat reveal">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <h3>Taxas baixas e claras</h3>
+      <p>A partir de 0,99% no Pix. Sem mensalidade, sem taxa de adesão, sem surpresa na fatura. O que você vê é o que paga.</p>
+    </div>
+    <div class="feat reveal">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg></div>
+      <h3>API & dashboard</h3>
+      <p>Integre em minutos com SDKs e webhooks. Acompanhe vendas, saldo e saques em um painel feito pra decisão rápida.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="como" style="background:var(--bg-soft);border-block:1px solid var(--line)"><div class="wrap">
+  <div class="section-head reveal">
+    <span class="eyebrow">Como funciona</span>
+    <h2 style="margin-top:14px">Do zero ao primeiro recebimento em 4 passos</h2>
+  </div>
+  <div class="steps">
+    <div class="step reveal"><div class="n">1</div><h3>Crie sua conta</h3><p>Cadastro 100% digital com aprovação em minutos. Sem papelada.</p></div>
+    <div class="step reveal"><div class="n">2</div><h3>Integre o checkout</h3><p>Link de pagamento pronto ou API. Copie, cole e comece a vender.</p></div>
+    <div class="step reveal"><div class="n">3</div><h3>Receba pagamentos</h3><p>Pix, cartão ou boleto. O dinheiro entra com antifraude ativo.</p></div>
+    <div class="step reveal"><div class="n">4</div><h3>Saque quando quiser</h3><p>Saldo disponível na hora. Saque para sua conta sem prazo travado.</p></div>
+  </div>
+</div></section>
+
+<!-- ============ METHODS ============ -->
+<section class="section"><div class="wrap">
+  <div class="section-head reveal">
+    <span class="eyebrow">Meios de pagamento</span>
+    <h2 style="margin-top:14px">Aceite como o seu cliente quer pagar</h2>
+  </div>
+  <div class="methods-wrap">
+    <div class="method-tabs">
+      <button class="mtab on" data-m="pix">
+        <span class="mk" style="background:#32BCAD">P</span>
+        <span><span class="mt">Pix</span><span class="md">QR Code e copia-e-cola, com confirmação instantânea.</span></span>
+        <span class="rate">0,99%</span>
+      </button>
+      <button class="mtab" data-m="card">
+        <span class="mk" style="background:linear-gradient(90deg,#1434CB,#EB001B)">C</span>
+        <span><span class="mt">Cartão de crédito</span><span class="md">Todas as bandeiras, até 12x, com tokenização segura.</span></span>
+        <span class="rate">2,99%</span>
+      </button>
+      <button class="mtab" data-m="boleto">
+        <span class="mk" style="background:var(--surface-3);color:var(--text)">B</span>
+        <span><span class="mt">Boleto bancário</span><span class="md">Registrado, com baixa automática e lembrete de vencimento.</span></span>
+        <span class="rate">R$ 1,99</span>
+      </button>
+    </div>
+    <div class="method-panel" id="methodPanel"></div>
+  </div>
+</div></section>
+
+<!-- ============ RATES ============ -->
+<section class="section" id="taxas" style="background:var(--bg-soft);border-block:1px solid var(--line)"><div class="wrap">
+  <div class="section-head reveal">
+    <span class="eyebrow">Taxas</span>
+    <h2 style="margin-top:14px">Preço transparente. Sem mensalidade.</h2>
+    <p>Você só paga quando vende. Quanto mais fatura, menor a taxa.</p>
+  </div>
+  <div class="rates">
+    <div class="rate-card reveal">
+      <div class="tagh"><span class="name">Pix</span></div>
+      <div class="big">0,99<small>%</small></div>
+      <div class="sub">por transação aprovada</div>
+      <ul>
+        <li><span class="ck">✓</span> Liquidação D+0 na hora</li>
+        <li><span class="ck">✓</span> QR Code dinâmico ilimitado</li>
+        <li><span class="ck">✓</span> Sem taxa de adesão</li>
+      </ul>
+      <a href="#cta" class="btn btn-soft">Começar</a>
+    </div>
+    <div class="rate-card feature reveal">
+      <div class="tagh"><span class="name">Cartão</span><span class="pop">Mais usado</span></div>
+      <div class="big">2,99<small>%</small></div>
+      <div class="sub">à vista · +0,33% por parcela</div>
+      <ul>
+        <li><span class="ck">✓</span> Todas as bandeiras + carteira digital</li>
+        <li><span class="ck">✓</span> Antifraude e tokenização inclusos</li>
+        <li><span class="ck">✓</span> Antecipação de recebíveis opcional</li>
+        <li><span class="ck">✓</span> Parcelamento em até 12x</li>
+      </ul>
+      <a href="#cta" class="btn btn-primary">Criar conta grátis</a>
+    </div>
+    <div class="rate-card reveal">
+      <div class="tagh"><span class="name">Boleto</span></div>
+      <div class="big">R$ 1,99<small></small></div>
+      <div class="sub">por boleto compensado</div>
+      <ul>
+        <li><span class="ck">✓</span> Registro e baixa automáticos</li>
+        <li><span class="ck">✓</span> Lembretes de vencimento</li>
+        <li><span class="ck">✓</span> Conciliação no dashboard</li>
+      </ul>
+      <a href="#cta" class="btn btn-soft">Começar</a>
+    </div>
+  </div>
+  <p class="muted" style="text-align:center;margin-top:28px;font-size:var(--t-sm)">Faturamento acima de R$ 100&nbsp;mil/mês? <a href="#" style="color:var(--green-400)">Fale com vendas</a> para taxas personalizadas.</p>
+</div></section>
+
+<!-- ============ DEVS ============ -->
+<section class="section" id="devs"><div class="wrap devs">
+  <div class="reveal">
+    <span class="eyebrow">Para desenvolvedores</span>
+    <h2 style="margin-top:14px;font-size:var(--t-2xl)">Uma API que você integra hoje</h2>
+    <p class="muted" style="margin-top:14px;font-size:var(--t-lg)">REST limpa, webhooks confiáveis e SDKs nas linguagens que seu time já usa. Ambiente sandbox para testar sem risco.</p>
+    <div class="dev-list">
+      <div class="dev-item"><div class="di"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg></div><div><h4>SDKs oficiais</h4><p>Node, Python, PHP, Go e Ruby — com tipos e exemplos prontos.</p></div></div>
+      <div class="dev-item"><div class="di"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H5.2L4 18z"/><path d="M8 9h8M8 12h5"/></svg></div><div><h4>Webhooks em tempo real</h4><p>Receba eventos de pagamento, estorno e chargeback com retry automático.</p></div></div>
+      <div class="dev-item"><div class="di"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6l-8-3z"/></svg></div><div><h4>Sandbox completo</h4><p>Simule aprovações, recusas e webhooks antes de ir para produção.</p></div></div>
+    </div>
+  </div>
+  <div class="reveal">
+    <div class="code">
+      <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="fn">criar-cobranca.js</span></div>
+<pre><span class="cm">// Cobrança Pix em 6 linhas</span>
+<span class="kw">import</span> { Dale } <span class="kw">from</span> <span class="st">"@dale/node"</span>;
+<span class="kw">const</span> dale = <span class="kw">new</span> <span class="fnn">Dale</span>(process.env.DALE_KEY);
+
+<span class="kw">const</span> charge = <span class="kw">await</span> dale.charges.<span class="fnn">create</span>({
+  amount: <span class="nm">125000</span>,        <span class="cm">// R$ 1.250,00</span>
+  method: <span class="st">"pix"</span>,
+  customer: <span class="st">"cus_8f2a91"</span>,
+  split: [{ recipient: <span class="st">"rec_afiliado"</span>, amount: <span class="nm">18750</span> }]
+});
+
+<span class="cm">// → { id: "ch_29x", status: "pending", qr_code: "00020126..." }</span></pre>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ METRICS ============ -->
+<section class="section metrics"><div class="glow2"></div><div class="wrap">
+  <div class="metric-grid">
+    <div class="metric reveal"><div class="v" data-count="4.2" data-suffix=" bi" data-prefix="R$ ">R$ 0</div><div class="k">processados em 2025</div></div>
+    <div class="metric reveal"><div class="v" data-count="12" data-suffix=" mil">0</div><div class="k">negócios usando dale.</div></div>
+    <div class="metric reveal"><div class="v" data-count="99.98" data-suffix="%">0%</div><div class="k">de uptime na infraestrutura</div></div>
+    <div class="metric reveal"><div class="v" data-count="2" data-prefix="~" data-suffix="s">0s</div><div class="k">para confirmar um Pix</div></div>
+  </div>
+</div></section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section"><div class="wrap">
+  <div class="section-head reveal">
+    <span class="eyebrow">Quem usa, recomenda</span>
+    <h2 style="margin-top:14px">A escolha de quem vende todo dia</h2>
+  </div>
+  <div class="tgrid">
+    <div class="tcard reveal">
+      <div class="stars">★★★★★</div>
+      <p class="quote">"Migramos do nosso antigo gateway e a aprovação no cartão subiu 9%. O split automático com os afiliados sozinho já valeu a troca."</p>
+      <div class="who"><div class="av" style="background:var(--green-400)">RT</div><div><div class="nm">Rafael Tavares</div><div class="rl">Fundador · Escola de Trade</div></div></div>
+    </div>
+    <div class="tcard reveal">
+      <div class="stars">★★★★★</div>
+      <p class="quote">"O Pix cai na conta na hora, de verdade. Pra quem vende infoproduto em lançamento, isso muda o fluxo de caixa completamente."</p>
+      <div class="who"><div class="av" style="background:var(--teal)">CM</div><div><div class="nm">Camila Moraes</div><div class="rl">Co-produtora · Mentoria Digital</div></div></div>
+    </div>
+    <div class="tcard reveal">
+      <div class="stars">★★★★★</div>
+      <p class="quote">"A documentação é a melhor que já vi no Brasil. Subimos o checkout transparente em uma tarde e o suporte responde de verdade."</p>
+      <div class="who"><div class="av" style="background:var(--amber)">LF</div><div><div class="nm">Lucas Ferraz</div><div class="rl">CTO · Loja de moda online</div></div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq" style="background:var(--bg-soft);border-block:1px solid var(--line)"><div class="wrap">
+  <div class="section-head reveal">
+    <span class="eyebrow">Dúvidas frequentes</span>
+    <h2 style="margin-top:14px">Tudo que você precisa saber</h2>
+  </div>
+  <div class="faq">
+    <div class="qa"><button>Quanto tempo leva para começar a receber?<span class="pm">+</span></button><div class="ans"><p>O cadastro é 100% digital e a maioria das contas é aprovada em minutos. Assim que aprovado, você já gera links de pagamento e cobranças Pix na hora.</p></div></div>
+    <div class="qa"><button>Tem mensalidade ou taxa de adesão?<span class="pm">+</span></button><div class="ans"><p>Não. A dale. cobra apenas uma taxa por transação aprovada — sem mensalidade, sem taxa de setup e sem fidelidade. Você só paga quando vende.</p></div></div>
+    <div class="qa"><button>Quando o dinheiro cai na minha conta?<span class="pm">+</span></button><div class="ans"><p>No Pix, a liquidação é D+0 — cai na hora. No cartão, o padrão é D+30, com antecipação opcional para receber em D+1. Boletos compensam em 1 a 2 dias úteis.</p></div></div>
+    <div class="qa"><button>Como funciona o split de pagamento?<span class="pm">+</span></button><div class="ans"><p>Você define os recebedores e os valores (fixos ou percentuais) na hora de criar a cobrança. A dale. divide automaticamente cada venda e repassa para cada recebedor, sem planilha manual.</p></div></div>
+    <div class="qa"><button>O antifraude tem custo extra?<span class="pm">+</span></button><div class="ans"><p>Não. Nosso motor antifraude com machine learning está incluso em todas as transações de cartão, sem cobrança adicional, reduzindo chargebacks desde a primeira venda.</p></div></div>
+  </div>
+</div></section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="section final" id="cta"><div class="wrap">
+  <div class="final-card reveal">
+    <img class="ic" src="assets/dale-mark.png" alt="dale.">
+    <h2>Comece a receber hoje.</h2>
+    <p>Crie sua conta grátis, integre em minutos e veja o primeiro Pix cair na hora. Sem mensalidade, sem burocracia.</p>
+    <div class="cta">
+      <a href="#" class="btn btn-primary" style="padding:16px 30px;font-size:16px">Criar conta grátis →</a>
+      <a href="#devs" class="btn btn-ghost" style="padding:16px 30px;font-size:16px">Ver documentação</a>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer"><div class="wrap">
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="logo"><img class="ic" src="assets/dale-mark.png" alt="dale."><span class="dale-word">dale<span class="dot">.</span></span></div>
+      <p>O gateway de pagamento que move o dinheiro do Brasil. Pix, cartão e boleto numa só integração.</p>
+    </div>
+    <div class="foot-col"><h5>Produto</h5><a href="#recursos">Recursos</a><a href="#taxas">Taxas</a><a href="#como">Como funciona</a><a href="#">Checkout</a><a href="#">Split</a></div>
+    <div class="foot-col"><h5>Desenvolvedores</h5><a href="#devs">Documentação</a><a href="#">API Reference</a><a href="#">SDKs</a><a href="#">Webhooks</a><a href="#">Status</a></div>
+    <div class="foot-col"><h5>Empresa</h5><a href="#">Sobre</a><a href="#">Blog</a><a href="#">Carreiras</a><a href="#">Contato</a><a href="#">Suporte</a></div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 dale. Pagamentos · Todos os direitos reservados.</span>
+    <span>CNPJ 00.000.000/0001-00 · Instituição de pagamento</span>
+  </div>
+</div></footer>
+
+<!-- ============ React tweaks island ============ -->
+<div id="tweaks-root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="assets/tweaks-app.jsx"></script>
+
+<!-- ============ interactions ============ -->
+<script>
+(function(){
+  // nav shadow on scroll
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll); onScroll();
+
+  // faux QR code
+  const qr = document.getElementById('qr');
+  if(qr){
+    const N=21; let svg='';
+    const rng=(s=>()=>((s=s*1103515245+12345)&0x7fffffff)/0x7fffffff)(7);
+    for(let y=0;y<N;y++)for(let x=0;x<N;x++){ if(rng()>0.52){ svg+=`<rect x="${x*100/N}" y="${y*100/N}" width="${100/N+0.4}" height="${100/N+0.4}" fill="#06100b"/>`; } }
+    // finder squares
+    const fnd=(ox,oy)=>`<rect x="${ox}" y="${oy}" width="26" height="26" fill="#06100b"/><rect x="${ox+5}" y="${oy+5}" width="16" height="16" fill="#fff"/><rect x="${ox+9}" y="${oy+9}" width="8" height="8" fill="#06100b"/>`;
+    svg = fnd(2,2)+fnd(72,2)+fnd(2,72)+svg;
+    qr.innerHTML = svg;
+  }
+
+  // method tabs
+  const panels = {
+    pix: {mk:'#32BCAD', t:'Pix', big:'R$ 1.250,00', body:'<div style="color:var(--text-dim);font-size:var(--t-sm);margin:8px 0 18px">Escaneie o QR Code ou use o copia-e-cola. Confirmação automática.</div>', extra:'qr'},
+    card: {mk:'linear-gradient(90deg,#1434CB,#EB001B)', t:'Cartão de crédito', big:'12x de R$ 116,30', body:'<div style="color:var(--text-dim);font-size:var(--t-sm);margin:8px 0 18px">Dados tokenizados, antifraude ativo e parcelamento em até 12x.</div>', extra:'card'},
+    boleto: {mk:'var(--surface-3)', t:'Boleto bancário', big:'R$ 1.250,00', body:'<div style="color:var(--text-dim);font-size:var(--t-sm);margin:8px 0 18px">Boleto registrado com baixa automática e vencimento configurável.</div>', extra:'boleto'}
+  };
+  const mp = document.getElementById('methodPanel');
+  function renderMethod(key){
+    const p = panels[key];
+    let visual = '';
+    if(p.extra==='qr') visual = `<div style="width:170px;height:170px;background:#fff;border-radius:var(--r-md);padding:12px;margin:6px auto 0"><svg viewBox="0 0 100 100" style="width:100%;height:100%">${document.getElementById('qr').innerHTML}</svg></div>`;
+    if(p.extra==='card') visual = `<div style="margin-top:6px;background:linear-gradient(135deg,#07120d,#0c1c14);border:1px solid var(--line-green);border-radius:16px;padding:22px;aspect-ratio:1.586;display:flex;flex-direction:column;justify-content:space-between"><div style="display:flex;justify-content:space-between;align-items:center"><img class="ic" style="width:30px" src="assets/dale-mark.png" alt="dale."><span style="font-family:var(--font-mono);font-size:11px;color:var(--text-dim)">CRÉDITO</span></div><div style="font-family:var(--font-mono);letter-spacing:.16em;color:var(--text-hi);font-size:15px">4821 •••• •••• 0726</div><div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:11px;color:var(--text-dim)"><span>MARINA ALVES</span><span>09/29</span></div></div>`;
+    if(p.extra==='boleto') visual = `<div style="margin-top:6px;background:#fff;border-radius:var(--r-md);padding:18px"><div style="display:flex;gap:3px;align-items:flex-end;height:64px">${Array.from({length:46}).map((_,i)=>`<div style=\"width:${1+(i%4)}px;height:100%;background:#0a0a0a;opacity:${i%3?1:.3}\"></div>`).join('')}</div><div style="font-family:var(--font-mono);font-size:11px;color:#222;margin-top:12px;letter-spacing:.04em">34191.79001 01043.510047 91020.150008 1 99880000125000</div></div>`;
+    mp.innerHTML = `<div style="display:flex;align-items:center;gap:12px;margin-bottom:6px"><span style="width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-weight:800;color:#fff;background:${p.mk}">${p.t[0]}</span><span style="font-family:var(--font-display);font-weight:700;color:var(--text-hi);font-size:var(--t-lg)">${p.t}</span></div><div style="font-family:var(--font-display);font-weight:800;font-size:var(--t-2xl);color:var(--text-hi);letter-spacing:-.02em">${p.big}</div>${p.body}${visual}`;
+  }
+  document.querySelectorAll('.mtab').forEach(t=>{
+    t.addEventListener('click',()=>{
+      document.querySelectorAll('.mtab').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on'); renderMethod(t.dataset.m);
+    });
+  });
+  renderMethod('pix');
+
+  // FAQ accordion
+  document.querySelectorAll('.qa button').forEach(b=>{
+    b.addEventListener('click',()=>{
+      const qa = b.parentElement;
+      const open = qa.classList.contains('open');
+      document.querySelectorAll('.qa').forEach(x=>x.classList.remove('open'));
+      if(!open) qa.classList.add('open');
+    });
+  });
+
+  // reveal on scroll
+  const io = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  // safety: never leave content hidden if IO doesn't fire
+  setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')), 2600);
+
+  // counters
+  function animateCount(el){
+    const target = parseFloat(el.dataset.count);
+    const dec = (el.dataset.count.split('.')[1]||'').length;
+    const pre = el.dataset.prefix||'', suf = el.dataset.suffix||'';
+    const dur = 1400, t0 = performance.now();
+    function tick(t){
+      const p = Math.min(1,(t-t0)/dur), e = 1-Math.pow(1-p,3);
+      const v = (target*e).toFixed(dec);
+      el.textContent = pre + v.replace('.',',') + suf;
+      if(p<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const cio = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ animateCount(e.target); cio.unobserve(e.target);} }); },{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+  // smooth anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href'); if(id.length<2) return;
+      const t=document.querySelector(id); if(t){ e.preventDefault(); window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'}); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
