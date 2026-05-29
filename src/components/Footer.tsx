@@ -1,3 +1,4 @@
+import { InstagramLogo } from '@phosphor-icons/react'
 
 const COLS = [
   {
@@ -46,6 +47,18 @@ export default function Footer() {
             <p className="text-[14px] text-dale-faint leading-[1.7] max-w-[250px]">
               O gateway de pagamento Pix para infoprodutores que querem receber na hora, sempre.
             </p>
+
+            <div className="flex items-center gap-3 mt-6">
+              <a
+                href="https://www.instagram.com/dalepay_/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram da dale."
+                className="flex items-center justify-center w-9 h-9 rounded-full border border-dale-400/[0.15] text-dale-faint hover:text-dale-400 hover:border-dale-400/[0.45] hover:bg-dale-400/[0.07] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
+              >
+                <InstagramLogo size={18} weight="light" />
+              </a>
+            </div>
           </div>
 
           {COLS.map(col => (
