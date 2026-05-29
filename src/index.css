@@ -28,10 +28,24 @@
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: ticker 28s linear infinite;
+  animation: ticker 30s linear infinite;
   will-change: transform;
 }
 .marquee-track:hover { animation-play-state: paused; }
+
+/* Ticker direita (sentido inverso) */
+@keyframes ticker-right {
+  from { transform: translateX(-25%); }
+  to   { transform: translateX(0%); }
+}
+
+.marquee-track-right {
+  display: flex;
+  width: max-content;
+  animation: ticker-right 30s linear infinite;
+  will-change: transform;
+}
+.marquee-track-right:hover { animation-play-state: paused; }
 
 /* ═══ Carrossel ═══ */
 .carousel-track {
