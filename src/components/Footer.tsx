@@ -73,7 +73,7 @@ export default function Footer() {
             © 2026 dale. Pagamentos · Todos os direitos reservados.
           </span>
           <span className="text-[13px] text-dale-faint">
-            CNPJ 00.000.000/0001-00 · Instituição de pagamento
+            CNPJ 66.754.403/0001-34 · Instituição de pagamento
           </span>
         </div>
 
